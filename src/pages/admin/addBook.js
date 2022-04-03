@@ -76,6 +76,7 @@ function AddBook() {
         showConfirmButton: false,
         timer: 3000
       })
+      console.log(error)
     }
   };
 
