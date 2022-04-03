@@ -150,7 +150,7 @@ function ProfileActive() {
                   <div className="col mt-5 bg-info "  >
                     {profile ? (
                       <img
-                        src={`http://localhost:5000/uploads/profile/${profile.image}`}
+                        src={`https://server-window-of-world.herokuapp.com/uploads/profile/${profile.image}`}
                         className="img-fluid shadow w-100"
                         style={{height:230}}
                       />
