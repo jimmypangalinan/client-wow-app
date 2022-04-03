@@ -1,0 +1,44 @@
+/* .backContent {
+  background-image: url(../assets/backgorund-book.png);
+  background-repeat: no-repeat;
+  background-position: right;
+} */
+
+/* Show in Large desktops and laptops */
+@media (min-width: 1200px) {
+  .bgimg {
+    background-image: url(../assets/backgorund-book.png);
+    background-repeat: no-repeat;
+    background-position: right;
+  }
+}
+
+/*Hide in Other Small Devices */
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .bgimg {
+    background-image: none;
+  }
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+  .bgimg {
+    background-image: none;
+  }
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+  .bgimg {
+    background-image: none;
+  }
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+  .bgimg {
+    background-image: none;
+  }
+}

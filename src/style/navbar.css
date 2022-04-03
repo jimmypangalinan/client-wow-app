@@ -1,0 +1,8 @@
+.toggle .dropdown-toggle::after {
+  display: none !important;
+}
+
+.toggle .dropdown-toggle:hover {
+  box-shadow: none;
+  text-decoration: none;
+}
