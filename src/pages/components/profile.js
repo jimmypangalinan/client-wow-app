@@ -5,7 +5,7 @@ import { API } from "../../config/api";
 import { Modal } from "react-bootstrap";
 
 //assets
-import Foto from "../../assets/profile.png";
+import Foto from "../../assets/foto.png";
 import Icon from "../../assets/icon-wow.png";
 import User from "../../assets/user.png";
 import Bill from "../../assets/bill.png";
@@ -101,7 +101,7 @@ function Profile() {
           }}
         /> : 
         <img
-            src={`http://localhost:5000/uploads/profile/${gambar.image}`}
+            src={`https://server-window-of-world.herokuapp.com/uploads/profile/${gambar.image}`}
             // src={Foto}
             style={{
               // borderRadius: 200,
