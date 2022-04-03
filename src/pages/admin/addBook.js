@@ -67,7 +67,6 @@ function AddBook() {
           showConfirmButton: false,
           timer: 10000
         })
-        console.log(error);
         console.log(response);
       }
     } catch (error) {
@@ -79,7 +78,7 @@ function AddBook() {
         timer: 3000
       })
       console.log(error)
-      console.log(response)
+   
     }
   };
 
