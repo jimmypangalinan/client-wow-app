@@ -58,7 +58,7 @@ function AddBook() {
           timer: 4000
         })
         
-      } else {
+      } else if(response.status == 400) {
         Swal.fire({
           position: 'center',
           icon: 'warning',
@@ -67,6 +67,8 @@ function AddBook() {
           showConfirmButton: false,
           timer: 10000
         })
+        console.log(error);
+        console.log(response);
       }
     } catch (error) {
         Swal.fire({
@@ -77,6 +79,7 @@ function AddBook() {
         timer: 3000
       })
       console.log(error)
+      console.log(response)
     }
   };
 
