@@ -14,7 +14,6 @@ import Attach from "../assets/attach.png";
 import Profile from "../pages/components/profile";
 
 function Subscribe() {
-
   const [form, setForm] = useState({
     transferProof: "",
     accountNumber: "",
@@ -40,15 +39,13 @@ function Subscribe() {
 
       const formData = new FormData();
       formData.set("accountNumber", form.accountNumber);
-      formData.set(
-        "transferProof",
-        form.transferProof[0],
-        form.transferProof[0].name
-      );
+      formData.set("transferProof",form.transferProof[0],form.transferProof[0].name);
       
       console.log(formData);
+
       const response = await API.post("/transaction", formData, config);
       console.log(response);
+      
       if (response.status == 200) {
         Swal.fire({
           position: 'center',
