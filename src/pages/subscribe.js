@@ -46,7 +46,6 @@ function Subscribe() {
         form.transferProof[0].name
       );
       
-
       console.log(formData);
       const response = await API.post("/transaction", formData, config);
       console.log(response);

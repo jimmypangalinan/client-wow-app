@@ -122,7 +122,7 @@ function Transaction() {
                   <td>{item.user.fullName}</td>
                   <td>
                     <a
-                      href={`http://localhost:5000/uploads/transferProof/${item.transferProof}`}
+                      href={`https://server-window-of-world.herokuapp.com/uploads/transferProof/${item.transferProof}`}
                       target="_blank"
                     >
                       {item.accountNumber}
