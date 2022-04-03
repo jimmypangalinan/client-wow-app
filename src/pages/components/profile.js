@@ -29,6 +29,7 @@ function Profile() {
   console.log(profile);
 
   const [gambar, setGambar] = useState([]);
+  console.log("this gambar" + gambar.image);
   const getGambar = async () => {
     try {
       const response = await API.get("/profile");
@@ -89,8 +90,19 @@ function Profile() {
           />
         </div>
         <div className="mb-4 py-4">
+          {gambar.image == [] ?
           <img
+          src={Foto}
+          style={{
+            // borderRadius: 200,
+            clipPath: "circle()",
+            height: 130,
+            border: 200,
+          }}
+        /> : 
+        <img
             src={`http://localhost:5000/uploads/profile/${gambar.image}`}
+            // src={Foto}
             style={{
               // borderRadius: 200,
               clipPath: "circle()",
@@ -98,6 +110,8 @@ function Profile() {
               border: 200,
             }}
           />
+        }
+          
         </div>
         <div className="my-4">
           <h4 className="fw-bold mb-4">
