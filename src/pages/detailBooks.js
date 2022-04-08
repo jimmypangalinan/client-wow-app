@@ -31,7 +31,7 @@ function Detailbooks() {
   const getproduct = async () => {
     try {
       const response = await API.get(`/book/${id}`);
-      setProduct(response.data.book);
+      setProduct(response.data.book.data);
       console.log(response);
     } catch (error) {
       console.log(error);
