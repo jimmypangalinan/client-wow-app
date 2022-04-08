@@ -33,6 +33,7 @@ function AfterLogin() {
   const getproducts = async () => {
     try {
       const response = await API.get("/books");
+      console.log(response);
       setProduct(response.data.data.books);
     } catch (error) {
       console.log(error);
