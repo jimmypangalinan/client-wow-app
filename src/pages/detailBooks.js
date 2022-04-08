@@ -97,7 +97,7 @@ function Detailbooks() {
             <div className="row ">
               <div className="col col-lg-4 ms-3 ms-lg-0 mt-3">
                 <img
-                  src={product.cover}
+                  src={`https://wow-app-server-v1.herokuapp.com/uploads/cover/${product.cover}`}
                   className="img-fluid  shadow"
                   style={{ borderRadius: 20, height: 550 }}
                 />
