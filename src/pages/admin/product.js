@@ -23,7 +23,7 @@ function Product() {
     //////////////////////
     const DeleteProduct = async (id) => {
       try {
-        const response = await API.delete(`/book/${id}`);
+        const response = await API.get(`/book/${id}`);
 
         if (response.status == 201 ) {
           Swal.fire({
