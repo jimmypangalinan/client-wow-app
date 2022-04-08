@@ -23,7 +23,7 @@ function Product() {
     //////////////////////
     const DeleteProduct = async (id) => {
       try {
-        const response = await API.get(`/book/${id}`);
+        const response = await API.delete(`/book/${id}`);
 
         if (response.status == 201 ) {
           Swal.fire({
@@ -79,7 +79,7 @@ function Product() {
                       <p>{item.author}</p>
                       <button 
                         className="btn btn-danger" 
-                        onClick={DeleteProduct(item.id)}  
+                        onClick={() => DeleteProduct(item.id)}  
                       >Delete</button>
                     </div>
                   );
