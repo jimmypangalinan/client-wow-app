@@ -39,7 +39,8 @@ const ReadBook = () => {
       <div style={{ height: "100vh", position: "relative" }}>
         <ReactReader
           styles={ownStyles}
-          url={`http://localhost:5000/uploads/books/${read.bookFile}`}
+          url={`https://wow-app-server-v1.herokuapp.com/uploads/books/${read.bookFile}`}
+          // url={`http://localhost:5000/uploads/books/${read.bookFile}`}
         />
       </div>
     </div>

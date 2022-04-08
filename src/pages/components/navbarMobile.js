@@ -89,7 +89,8 @@ function NavbarUserMobile() {
       </Offcanvas.Header>
       <div className="ms-3">
       <img
-            src={`http://localhost:5000/uploads/profile/${gambar.image}`}
+            src={`https://wow-app-server-v1.herokuapp.com/${gambar.image}`}
+            // src={`http://localhost:5000/uploads/profile/${gambar.image}`}
             style={{
               // borderRadius: 200,
               clipPath: "circle()",

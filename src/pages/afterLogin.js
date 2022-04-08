@@ -88,7 +88,8 @@ function AfterLogin() {
                       }}
                     >
                       <img
-                        src={`http://localhost:5000/uploads/cover/${item.cover}`}
+                        src={`https://wow-app-server-v1.herokuapp.com/uploads/cover/${item.cover}`}
+                        // src={`http://localhost:5000/uploads/cover/${item.cover}`}
                         alt=""
                         className="img-fluid shadow mx-auto w-100"
                         style={{ height: 390, borderRadius: 8 }}
@@ -113,7 +114,8 @@ function AfterLogin() {
                       }}
                     >
                       <img
-                        src={`http://localhost:5000/uploads/cover/${item.cover}`}
+                        src={`https://wow-app-server-v1.herokuapp.com/uploads/cover/${item.cover}`}
+                        // src={`http://localhost:5000/uploads/cover/${item.cover}`}
                         alt=""
                         className="img-fluid shadow  mx-auto w-100"
                         style={{ height: 390, borderRadius: 8 }}

@@ -150,7 +150,8 @@ function ProfileActive() {
                   <div className="col mt-5 bg-info "  >
                     {profile ? (
                       <img
-                        src={`https://server-window-of-world.herokuapp.com/uploads/profile/${profile.image}`}
+                        src={`https://wow-app-server-v1.herokuapp.com/uploads/profile/${profile.image}`}
+                        // src={`http://localhost:5000/uploads/profile/${profile.image}`}
                         className="img-fluid shadow w-100"
                         style={{height:230}}
                       />
@@ -190,7 +191,8 @@ function ProfileActive() {
                       }}
                     >
                       <img
-                        src={`http://localhost:5000/uploads/cover/${item.product.cover}`}
+                        src={`https://wow-app-server-v1.herokuapp.com/uploads/cover/${item.product.cover}`}
+                        // src={`http://localhost:5000/uploads/cover/${item.product.cover}`}
                         alt=""
                         className="img-fluid shadow  mx-auto w-100"
                         style={{ height: 390, borderRadius: 8 }}

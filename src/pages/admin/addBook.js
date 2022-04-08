@@ -48,7 +48,7 @@ function AddBook() {
 
       const response = await API.post("/addProduct", formData, config);
 
-      if (response.data.status == "Success") {
+      if (response.status == 201 ) {
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -58,7 +58,7 @@ function AddBook() {
           timer: 4000
         })
         
-      } else if(response.status == 400) {
+      } else if(response.status == 200) {
         Swal.fire({
           position: 'center',
           icon: 'warning',
@@ -68,17 +68,25 @@ function AddBook() {
           timer: 10000
         })
         console.log(response);
+      }else if(response.status == 400){
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Ops... , Something Wrong',
+          showConfirmButton: false,
+          timer: 3000
+        })
+        console.log(response)
       }
     } catch (error) {
         Swal.fire({
-        position: 'center',
-        icon: 'error',
-        title: 'Ops... , Something Wrong',
-        showConfirmButton: false,
-        timer: 3000
-      })
-      console.log(error)
-   
+          position: 'center',
+          icon: 'error',
+          title: 'Ops..., Sever Not Connect',
+          showConfirmButton: false,
+          timer: 3000
+        })
+        console.log(error)
     }
   };
 

@@ -101,7 +101,8 @@ function Profile() {
           }}
         /> : 
         <img
-            src={`https://server-window-of-world.herokuapp.com/uploads/profile/${gambar.image}`}
+            src={`https://wow-app-server-v1.herokuapp.com/uploads/profile/${gambar.image}`}
+            // src={`http://localhost:5000/uploads/profile/${gambar.image}`}
             // src={Foto}
             style={{
               // borderRadius: 200,
