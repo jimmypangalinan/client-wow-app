@@ -11,7 +11,7 @@ const ReadBook = () => {
   const getproduct = async () => {
     try {
       const response = await API.get(`/book/${id}`);
-      setRead(response.data.book);
+      setRead(response.data.book.data);
       console.log(response);
     } catch (error) {
       console.log(error);

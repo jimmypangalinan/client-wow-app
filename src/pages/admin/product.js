@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { API } from "../../config/api";
+import Swal from "sweetalert2";
 
 // component
 import NavbarComponent from "../components/navbarAdmin";
@@ -18,6 +19,35 @@ function Product() {
     useEffect(() => {
       getproducts();
     }, []);
+
+    //////////////////////
+    const DeleteProduct = async (id) => {
+      try {
+        const response = await API.delete(`/book/${id}`);
+
+        if (response.status == 201 ) {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Success to delete book',
+            text: "Please don't repeat submit again !",
+            showConfirmButton: false,
+            timer: 4000
+          })
+          
+        }
+      } catch (error) {
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Ops..., Server error',
+          showConfirmButton: false,
+          timer: 3000
+        })
+        console.log(error)
+      }
+    };
+
   return (
     <div>
       <div>
@@ -47,6 +77,10 @@ function Product() {
 
                       <h5 className="my-2">{item.title}</h5>
                       <p>{item.author}</p>
+                      <button 
+                        className="btn btn-danger" 
+                        onClick={DeleteProduct(item.id)}  
+                      >Delete</button>
                     </div>
                   );
                 })}
