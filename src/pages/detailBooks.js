@@ -42,6 +42,7 @@ function Detailbooks() {
     getproduct();
   }, []);
 
+  console.log("this product" + product);
 
   // add my list
   const [message, setMessage] = useState(null);
