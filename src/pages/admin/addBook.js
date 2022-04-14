@@ -46,9 +46,11 @@ function AddBook() {
       formData.set("bookFile", form.bookFile[0], form.bookFile[0].name);
       formData.set("cover", form.cover[0], form.cover[0].name);
 
+      console.log(formData);
+
       const response = await API.post("/addProduct", formData, config);
 
-      if (response.status == 201 ) {
+      if (response.status == 201) {
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -57,8 +59,8 @@ function AddBook() {
           showConfirmButton: false,
           timer: 4000
         })
-        
-      } else if(response.status == 200) {
+
+      } else if (response.status == 200) {
         Swal.fire({
           position: 'center',
           icon: 'warning',
@@ -68,7 +70,7 @@ function AddBook() {
           timer: 10000
         })
         console.log(response);
-      }else if(response.status == 400){
+      } else if (response.status == 400) {
         Swal.fire({
           position: 'center',
           icon: 'error',
@@ -79,14 +81,14 @@ function AddBook() {
         console.log(response)
       }
     } catch (error) {
-        Swal.fire({
-          position: 'center',
-          icon: 'error',
-          title: 'Ops..., Sever Not Connect',
-          showConfirmButton: false,
-          timer: 3000
-        })
-        console.log(error)
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Ops..., Sever Not Connect',
+        showConfirmButton: false,
+        timer: 3000
+      })
+      console.log(error)
     }
   };
 
@@ -102,37 +104,95 @@ function AddBook() {
           <div className="row mx-5 ">
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3">
-                <Form.Control style={{ backgroundColor: "#F4F1F1" }} type="text" name="title" onChange={handleChange} placeholder="Title Book"required />
+                <Form.Control
+                  style={{ backgroundColor: "#F4F1F1" }}
+                  type="text"
+                  name="title"
+                  onChange={handleChange}
+                  placeholder="Title Book" required
+                />
               </Form.Group>
               <Form.Group className="mb-3">
-                <Form.Control style={{ backgroundColor: "#F4F1F1" }} type="text" name="publicationDate" onChange={handleChange} placeholder="Publication Date" required />
+                <Form.Control
+                  style={{ backgroundColor: "#F4F1F1" }}
+                  type="text"
+                  name="publicationDate"
+                  onChange={handleChange}
+                  placeholder="Publication Date"
+                />
               </Form.Group>
               <Form.Group className="mb-3">
-                <Form.Control style={{ backgroundColor: "#F4F1F1" }} type="text" name="pages" onChange={handleChange} placeholder="Pages" required />
+                <Form.Control
+                  style={{ backgroundColor: "#F4F1F1" }}
+                  type="text"
+                  name="pages"
+                  onChange={handleChange}
+                  placeholder="Pages" />
               </Form.Group>
               <Form.Group className="mb-3">
-                <Form.Control style={{ backgroundColor: "#F4F1F1" }} type="text" name="author" onChange={handleChange} placeholder="Author" require/>
+                <Form.Control
+                  style={{ backgroundColor: "#F4F1F1" }}
+                  type="text"
+                  name="author"
+                  onChange={handleChange}
+                  placeholder="Author"
+                />
               </Form.Group>
               <Form.Group className="mb-3">
-                <Form.Control style={{ backgroundColor: "#F4F1F1" }} type="text" name="isbn" onChange={handleChange} placeholder="ISBN" required />
+                <Form.Control
+                  style={{ backgroundColor: "#F4F1F1" }}
+                  type="text"
+                  name="isbn"
+                  onChange={handleChange}
+                  placeholder="ISBN"
+                />
               </Form.Group>
               <Form.Group className="mb-3">
-                <Form.Control style={{ backgroundColor: "#F4F1F1" }} as="textarea" type="text" name="about" rows={4} onChange={handleChange} placeholder="About This Book" required/>
+                <Form.Control
+                  style={{ backgroundColor: "#F4F1F1" }}
+                  as="textarea"
+                  type="text"
+                  name="about"
+                  rows={4}
+                  onChange={handleChange}
+                  placeholder="About This Book"
+                />
               </Form.Group>
               <Form.Group className="mb-3">
-                <label className="col ps-2 col-lg-3 border border-danger rounded  mt-3 ps-lg-3 py-2 fw-bold text-start text-danger">
+                <label
+                  className="col ps-2 col-lg-3 border border-danger rounded  mt-3 ps-lg-3 py-2 fw-bold text-start text-danger">
                   Attache Book File
-                  <input type="file" name="bookFile" onChange={handleChange} className="fileInput d-none " required />
-                  <img src={Attach} className="float-end pe-2 visiable" />
+                  <input
+                    type="file"
+                    name="bookFile"
+                    onChange={handleChange}
+                    className="fileInput d-none "
+                  />
+                  <img
+                    src={Attach}
+                    className="float-end pe-2 visiable"
+                  />
                 </label>
-                <label className="col ps-2 col-lg-3 border border-danger rounded ms-lg-3 mt-3 ps-lg-3 py-2 fw-bold text-start text-danger">
+                <label
+                  className="col ps-2 col-lg-3 border border-danger rounded ms-lg-3 mt-3 ps-lg-3 py-2 fw-bold text-start text-danger">
                   Attache Cover Book
-                  <input type="file" name="cover" onChange={handleChange} className="fileInput d-none" required/>
-                  <img src={Attach} alt="" className="float-end pe-2 visiable" />
+                  <input
+                    type="file"
+                    name="cover"
+                    onChange={handleChange}
+                    className="fileInput d-none"
+                  />
+                  <img
+                    src={Attach}
+                    className="float-end pe-2 visiable"
+                  />
                 </label>
               </Form.Group>
               <Form.Group className="mb-3 text-end">
-                <button className="btn  btn-danger" type="submit" style={{ width: 200 }}>
+                <button
+                  className="btn  btn-danger"
+                  type="submit"
+                  style={{ width: 200 }}>
                   Add Book
                 </button>
               </Form.Group>
