@@ -156,7 +156,7 @@ function ProfileActive() {
                   <div className="col mt-5 bg-info "  >
                     {profile ? (
                       <img
-                        src={path + `profile/${profile.image}`}
+                        src={path + `${profile.image}`}
                         className="img-fluid shadow w-100"
                         style={{height:230}}
                       />
