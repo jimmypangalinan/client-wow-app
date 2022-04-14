@@ -14,7 +14,6 @@ import Subscribe from "./pages/subscribe";
 import ProfileActive from "./pages/profileActive";
 import Transaction from "./pages/admin/transaction";
 import AddBook from "./pages/admin/addBook";
-import Complain from "./pages/complain";
 import ComplainAdmin from "./pages/complainAdmin";
 import Product from "./pages/admin/product";
 
@@ -89,7 +88,6 @@ function App() {
       <Route exact path="/addBook" element={<AddBook />} />
       <Route exact path="/afterLogin" element={<AfterLogin />} />
       <Route exact path="/subscribe" element={<Subscribe />} />
-      <Route exact path="/complain" element={<Complain />} />
       <Route exact path="/complainAdmin" element={<ComplainAdmin />} />
       <Route exact path="/product" element={<Product />} />
       <Route exact path="/detailBooks/:id" element={<Detailbooks />} />

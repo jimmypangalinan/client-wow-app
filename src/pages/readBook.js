@@ -6,13 +6,21 @@ import NavbarUser from "../pages/components/navbarUser";
 import NavbarUserMobile from "./components/navbarMobile";
 
 const ReadBook = () => {
-  const [read, setRead] = useState({});
+
   const { id } = useParams();
+
+  // state acomodate book for read
+  const [path, setPath] = useState();
+  const [read, setRead] = useState({});
+  
   const getproduct = async () => {
     try {
+
       const response = await API.get(`/book/${id}`);
+
       setRead(response.data.book.data);
-      console.log(response);
+      setPath(response.data.book.path);
+
     } catch (error) {
       console.log(error);
     }
@@ -21,6 +29,7 @@ const ReadBook = () => {
   useEffect(() => {
     getproduct();
   }, []);
+
   const ownStyles = {
     ...ReactReaderStyle,
     arrow: {
@@ -28,6 +37,7 @@ const ReadBook = () => {
       color: "rgba(205, 205, 205, 0.7)",
     },
   };
+  
   return (
     <div className="position-relative">
       <div className="d-sm-none">
@@ -39,8 +49,7 @@ const ReadBook = () => {
       <div style={{ height: "100vh", position: "relative" }}>
         <ReactReader
           styles={ownStyles}
-          url={`https://wow-app-server-v1.herokuapp.com/uploads/books/${read.bookFile}`}
-          // url={`http://localhost:5000/uploads/books/${read.bookFile}`}
+          url={ path + `books/${read.bookFile}`}
         />
       </div>
     </div>

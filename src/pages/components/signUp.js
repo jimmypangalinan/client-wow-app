@@ -75,6 +75,8 @@ function SignUp() {
     }
   };
 
+
+  // modal
   const [state, dispatch] = useContext(UserContextModal);
   const closeModalSignUp = () => {
     dispatch({

@@ -12,40 +12,51 @@ import Bill from "../../assets/bill.png";
 import Logout from "../../assets/logout.png";
 
 function Profile() {
-  const [profile, setProfile] = useState([]);
+
+  const navigate = useNavigate();
+
+  // state show must pay to access
   const [show, setShow] = useState(false);
+
+  //state user
+  const [profile, setProfile] = useState([]);
+
   const getProfile = async () => {
     try {
       const response = await API.get("/user");
       setProfile(response.data.dataUser);
-      console.log(response);
-    } catch (error) {}
+
+    } catch (error) {
+      console.log(error);
+     }
   };
 
   useEffect(() => {
     getProfile();
   }, []);
 
-  console.log(profile);
 
+  // state gambar 
+  const [path, setPath] = useState();
   const [gambar, setGambar] = useState([]);
-  console.log("this gambar" + gambar.image);
+
   const getGambar = async () => {
     try {
+
       const response = await API.get("/profile");
+
       setGambar(response.data.dataProfiles);
-    
-    } catch (error) {}
+      setPath(response.data.path);
+
+    } catch (error) { }
   };
 
   useEffect(() => {
     getGambar();
   }, []);
-  console.log(gambar);
-  //////////////////
-  const navigate = useNavigate();
+
+  // for remove token if log out
   const [state, dispatch] = useContext(UserContextToken);
-  console.log(state);
 
   function handleProfile() {
     navigate("/profileActive");
@@ -91,32 +102,30 @@ function Profile() {
         </div>
         <div className="mb-4 py-4">
           {gambar.image == [] ?
-          <img
-          src={Foto}
-          style={{
-            // borderRadius: 200,
-            clipPath: "circle()",
-            height: 130,
-            border: 200,
-          }}
-        /> : 
-        <img
-            src={`https://wow-app-server-v1.herokuapp.com/uploads/profile/${gambar.image}`}
-            // src={`http://localhost:5000/uploads/profile/${gambar.image}`}
-            // src={Foto}
-            style={{
-              // borderRadius: 200,
-              clipPath: "circle()",
-              height: 130,
-              border: 200,
-            }}
-          />
-        }
-          
+            <img
+              src={Foto}
+              style={{
+                clipPath: "circle()",
+                height: 130,
+                border: 200,
+              }}
+            /> :
+            <img
+              src={path + `profile/${gambar.image}`}
+              style={{
+                clipPath: "circle()",
+                height: 130,
+                border: 200,
+              }}
+            />
+          }
+
         </div>
         <div className="my-4">
           <h4 className="fw-bold mb-4">
-            {profile ? <span>{profile.fullName}</span> : <span>null</span>}
+            {profile ?
+              <span>{profile.fullName}</span>
+              : <span>null</span>}
           </h4>
           <h5 className="text-danger fw-bold">
             {profile.status == "Subscribe" ? (
@@ -129,17 +138,13 @@ function Profile() {
         <hr />
 
         {profile.status === "Subscribe" ? (
-            <div className="my-3 py-3 text-start mask" onClick={handleProfile} style={{ cursor: "pointer" }}>
-              <img src={User} alt="" className="d-inline me-4" />
-              <h4 className="d-inline ms-3 text-muted ">Profile</h4>
-            </div>
-            ) : ( 
-            // <div className="my-3 py-3 text-start mask"   onClick={() => {setShow(false)}} style={{ cursor: "pointer" }}>
-            //   <img src={User} alt="" className="d-inline me-4" />
-            //   <h4 className="d-inline ms-3 text-muted ">Profile</h4>
-            // </div>
-            <span></span>
-            )}
+          <div className="my-3 py-3 text-start mask" onClick={handleProfile} style={{ cursor: "pointer" }}>
+            <img src={User} alt="" className="d-inline me-4" />
+            <h4 className="d-inline ms-3 text-muted ">Profile</h4>
+          </div>
+        ) : (
+          <span></span>
+        )}
 
         <div className="my-3 py-3 text-start">
           <img src={Bill} alt="" className="d-inline me-4" />

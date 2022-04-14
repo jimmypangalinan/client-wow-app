@@ -18,8 +18,10 @@ import Profile from "./components/profile";
 import EditProfile from "./components/editProfile";
 
 function ProfileActive() {
+
   const [state, dispatch] = useContext(UserContextToken);
   console.log(state);
+
   const navigate = useNavigate();
 
   function exploreBook() {
@@ -27,13 +29,17 @@ function ProfileActive() {
   }
 
   //profile
+  const [path, setPath] = useState()
   const [profile, setProfile] = useState([]);
 
   const getProfile = async () => {
     try {
       const response = await API.get("/profile");
+
       setProfile(response.data.dataProfiles);
+      setPath(response.data.path);
       // getProfile();
+
     } catch (error) {}
   };
 
@@ -41,24 +47,24 @@ function ProfileActive() {
     getProfile();
   }, []);
 
-  console.log(profile);
 
   // mylist
   const [myList, setMyList] = useState([]);
 
   const getMyList = async () => {
     try {
+
       const response = await API.get("/myLists");
       setMyList(response.data.myListExis);
-      console.log(response);
-    } catch (error) {}
+
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
     getMyList();
   }, []);
-
-  console.log(myList);
 
   return (
     <div>
@@ -150,8 +156,7 @@ function ProfileActive() {
                   <div className="col mt-5 bg-info "  >
                     {profile ? (
                       <img
-                        src={`https://wow-app-server-v1.herokuapp.com/uploads/profile/${profile.image}`}
-                        // src={`http://localhost:5000/uploads/profile/${profile.image}`}
+                        src={path + `profile/${profile.image}`}
                         className="img-fluid shadow w-100"
                         style={{height:230}}
                       />
@@ -191,8 +196,7 @@ function ProfileActive() {
                       }}
                     >
                       <img
-                        src={`https://wow-app-server-v1.herokuapp.com/uploads/cover/${item.product.cover}`}
-                        // src={`http://localhost:5000/uploads/cover/${item.product.cover}`}
+                        src={path + `cover/${item.product.cover}`}
                         alt=""
                         className="img-fluid shadow  mx-auto w-100"
                         style={{ height: 390, borderRadius: 8 }}

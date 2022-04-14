@@ -10,11 +10,14 @@ import NavbarMobile from "../pages/components/navbarMobile";
 import "../style/afterLogin.css";
 
 function AfterLogin() {
-  const navigate = useNavigate();
-  const [show, setShow] = useState(false);
-  // const [state, dispatch] = useContext(UserContextToken);
 
+  const navigate = useNavigate();
+  // show please make a payment
+  const [show, setShow] = useState(false);
+
+  // status user
   const [status, setStatus] = useState({});
+
   const getProfile = async () => {
     try {
       const response = await API.get("/user");
@@ -26,15 +29,22 @@ function AfterLogin() {
     getProfile();
   }, []);
 
-  console.log(status.status);
-  // get books
 
+  // get books
+  // path
+  const [path, setPath] = useState();
+
+  // state books
   const [products, setProduct] = useState([]);
+
   const getproducts = async () => {
     try {
+
       const response = await API.get("/books");
-      console.log(response);
+
       setProduct(response.data.data.books);
+      setPath(response.data.data.path);
+
     } catch (error) {
       console.log(error);
     }
@@ -89,8 +99,7 @@ function AfterLogin() {
                       }}
                     >
                       <img
-                        src={`https://wow-app-server-v1.herokuapp.com/uploads/cover/${item.cover}`}
-                        // src={`http://localhost:5000/uploads/cover/${item.cover}`}
+                        src={ path + `cover/${item.cover}`}
                         alt=""
                         className="img-fluid shadow mx-auto w-100"
                         style={{ height: 390, borderRadius: 8 }}
@@ -115,8 +124,7 @@ function AfterLogin() {
                       }}
                     >
                       <img
-                        src={`https://wow-app-server-v1.herokuapp.com/uploads/cover/${item.cover}`}
-                        // src={`http://localhost:5000/uploads/cover/${item.cover}`}
+                        src={ path + `cover/${item.cover}`}
                         alt=""
                         className="img-fluid shadow  mx-auto w-100"
                         style={{ height: 390, borderRadius: 8 }}

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Alert, Modal } from "react-bootstrap";
 import { API } from "../config/api";
@@ -14,6 +14,29 @@ import Attach from "../assets/attach.png";
 import Profile from "../pages/components/profile";
 
 function Subscribe() {
+
+  const navigate = useNavigate();
+
+
+  //state user
+  const [profile, setProfile] = useState([]);
+
+  const getProfile = async () => {
+    try {
+      const response = await API.get("/user");
+      setProfile(response.data.dataUser);
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getProfile();
+  }, []);
+
+
+  // state kosong untuk inputan
   const [form, setForm] = useState({
     transferProof: "",
     accountNumber: "",
@@ -35,17 +58,13 @@ function Subscribe() {
           "Content-type": "multipart/form-data",
         },
       };
-      console.log(form);
 
       const formData = new FormData();
       formData.set("accountNumber", form.accountNumber);
-      formData.set("transferProof",form.transferProof[0],form.transferProof[0].name);
-      
-      console.log(formData);
+      formData.set("transferProof", form.transferProof[0], form.transferProof[0].name);
 
       const response = await API.post("/transaction", formData, config);
-      console.log(response);
-      
+
       if (response.status == 200) {
         Swal.fire({
           position: 'center',
@@ -56,14 +75,14 @@ function Subscribe() {
           timer: 2000
         })
       } else if (response.status == 201) {
-          Swal.fire({
-            position: 'center',
-            icon: 'warning',
-            title: 'You still have an unfinished transaction',
-            text: "Wait for admin to confirm your subscribe!",
-            showConfirmButton: false,
-            timer: 2000
-          })
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: 'You still have an unfinished transaction',
+          text: "Wait for admin to confirm your subscribe!",
+          showConfirmButton: false,
+          timer: 2000
+        })
       }
     } catch (error) {
       Swal.fire({
@@ -77,18 +96,21 @@ function Subscribe() {
     }
   };
 
-  ////////////////////////
 
+  // state show thank you
   const [show, setShow] = useState(false);
-  const navigate = useNavigate();
 
-  const handleToShowPremium = () => setShow(true);
+  const handleToShowPremium = () => {
+    setShow(true);
+  }
+
   const handleToHidePremium = () => {
     setShow(false);
-    // navigate("/afterlogin");
+    navigate("/afterlogin");
   };
 
-  /////////////////////
+
+
 
   return (
     <div>
@@ -115,7 +137,8 @@ function Subscribe() {
             id="premium"
             style={{ height: "100vh" }}
           >
-            <div className="">
+            {profile.status === "Not subscribe" ? (
+              <div className="">
               <div className=" text-center">
                 <h1 className="mb-5">Premium</h1>
                 <h5 className="mx-2 ">
@@ -135,7 +158,7 @@ function Subscribe() {
                       onChange={handleChange}
                     />
                   </div>
-                  
+
                   <label className="col-10 border border-danger mt-3 ps-3 py-2 fw-bold text-start text-danger">
                     Attache proof of transfer
                     <input
@@ -146,20 +169,37 @@ function Subscribe() {
                     />
                     <img src={Attach} alt="" className="float-end pe-3" />
                   </label>
-                  
+
                   <div className="col-10 offset-1 d-grid gap-2 py-5">
-                  {/* {message && message} */}
                     <button
                       className="btn btn-danger"
                       type="submit"
-                      // onClick={handleToShowPremium}
+                      onClick={handleToShowPremium}
                     >
                       Send
                     </button>
                   </div>
                 </form>
+
               </div>
             </div>
+            )
+               :
+              (
+                <div>
+                <h3 className="mb-5">Your Status :</h3>
+                <h1 className="mb-5 text-success">Premium</h1>
+              </div>
+              )
+
+
+
+
+            }
+
+
+
+
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { API } from "../config/api";
 import { Alert } from "react-bootstrap";
+
 // component
 import Profile from "../pages/components/profile";
 import ReadBook from "../assets/read.png";
@@ -11,10 +12,13 @@ import NavbarUserMobile from "./components/navbarMobile";
 function Detailbooks() {
   const navigate = useNavigate();
 
+  // to read book
   function handleReadBook() {
     navigate(`/readBook/${product.id}`);
   }
 
+  // state accommodate book
+  const [path, setPath] = useState();
   const [product, setProduct] = useState({
     title: "",
     publicationDate: "",
@@ -28,11 +32,15 @@ function Detailbooks() {
 
   const { id } = useParams();
 
+  // get book
   const getproduct = async () => {
     try {
+
       const response = await API.get(`/book/${id}`);
+
       setProduct(response.data.book.data);
-      console.log(response);
+      setPath(response.data.book.path);
+
     } catch (error) {
       console.log(error);
     }
@@ -41,8 +49,6 @@ function Detailbooks() {
   useEffect(() => {
     getproduct();
   }, []);
-
-  console.log("this product" + product);
 
   // add my list
   const [message, setMessage] = useState(null);
@@ -58,7 +64,6 @@ function Detailbooks() {
       };
 
       const response = await API.post(`/addmylist/${id}`, config);
-      console.log(response);
 
       if (response.data.status === "Delete") {
         const alert = (
@@ -68,14 +73,18 @@ function Detailbooks() {
         );
         setMessage(alert);
         setButton(true);
+
       } else {
+
         const alert = (
           <Alert variant="success" className="py-1">
             Book Success Add on Mylist
           </Alert>
         );
+
         setMessage(alert);
         setButton(false);
+        
       }
     } catch (error) {
       console.log(error);
@@ -98,8 +107,7 @@ function Detailbooks() {
             <div className="row ">
               <div className="col col-lg-4 ms-3 ms-lg-0 mt-3">
                 <img
-                  src={`https://wow-app-server-v1.herokuapp.com/uploads/cover/${product.cover}`}
-                  // src={product.cover}
+                  src={ path + `cover/${product.cover}`}
                   className="img-fluid  shadow"
                   style={{ borderRadius: 20, height: 550 }}
                 />
@@ -125,18 +133,10 @@ function Detailbooks() {
               <h3 className="mt-3 fw-bold">About This Book</h3>
               <p>{product.about}</p>
             </div>
-           <div className="mx-3">
-           {message && message}
-           </div>
+            <div className="mx-3">
+              {message && message}
+            </div>
             <div className="d-flex justify-content-end">
-              
-              {/* <button
-                className="btn btn-danger me-3 fw-bold"
-                onClick={handleSubmit}
-              >
-                Add or Delete My List
-                <img src={AddMyList} alt="" className="ms-3" />
-              </button> */}
 
               {button ? (
                 <button
