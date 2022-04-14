@@ -14,7 +14,7 @@ function AddBook() {
     author: "",
     isbn: "",
     about: "",
-    bookFile: "",
+    // bookFile: "",
     cover: "",
   });
 
@@ -43,7 +43,7 @@ function AddBook() {
       formData.set("author", form.author);
       formData.set("isbn", form.isbn);
       formData.set("about", form.about);
-      formData.set("bookFile", form.bookFile[0], form.bookFile[0].name);
+      // formData.set("bookFile", form.bookFile[0], form.bookFile[0].name);
       formData.set("cover", form.cover[0], form.cover[0].name);
 
       console.log(formData);
@@ -159,7 +159,7 @@ function AddBook() {
                 />
               </Form.Group>
               <Form.Group className="mb-3">
-                <label
+                {/* <label
                   className="col ps-2 col-lg-3 border border-danger rounded  mt-3 ps-lg-3 py-2 fw-bold text-start text-danger">
                   Attache Book File
                   <input
@@ -172,7 +172,7 @@ function AddBook() {
                     src={Attach}
                     className="float-end pe-2 visiable"
                   />
-                </label>
+                </label> */}
                 <label
                   className="col ps-2 col-lg-3 border border-danger rounded ms-lg-3 mt-3 ps-lg-3 py-2 fw-bold text-start text-danger">
                   Attache Cover Book
