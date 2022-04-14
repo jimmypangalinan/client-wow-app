@@ -4,12 +4,14 @@ import { API } from "../../config/api";
 import NavbarComponent from "../../pages/components/navbarAdmin";
 
 function Transaction() {
+  const [path, setPath] = useState([]);
   const [transaction, setTransaction] = useState([]);
   // get transactions
   const getTransaction = async () => {
     try {
       const response = await API.get("/transactions");
       setTransaction(response.data.data.transactionExist);
+      setPath(response.data.data.path);
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -122,8 +124,7 @@ function Transaction() {
                   <td>{item.user.fullName}</td>
                   <td>
                     <a
-                      href={`https://wow-app-server-v1.herokuapp.com/uploads/transferProof/${item.transferProof}`}
-                      // href={`http://localhost:5000/uploads/transferProof/${item.transferProof}`}
+                      href={path + `${item.transferProof}`}
                       target="_blank"
                     >
                       {item.accountNumber}

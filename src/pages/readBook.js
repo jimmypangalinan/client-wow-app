@@ -49,7 +49,7 @@ const ReadBook = () => {
       <div style={{ height: "100vh", position: "relative" }}>
         <ReactReader
           styles={ownStyles}
-          url={ path + `books/${read.bookFile}`}
+          url={ path + `${read.bookFile}`}
         />
       </div>
     </div>

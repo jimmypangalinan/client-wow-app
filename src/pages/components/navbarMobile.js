@@ -19,11 +19,13 @@ function NavbarUserMobile() {
         getProfile();
       }, []);
 
+      const [path, setPath] = useState();
       const [gambar, setGambar] = useState([]);
   const getGambar = async () => {
     try {
       const response = await API.get("/profile");
       setGambar(response.data.dataProfiles);
+      setPath(response.data.path);
     } catch (error) {}
   };
 
@@ -89,8 +91,7 @@ function NavbarUserMobile() {
       </Offcanvas.Header>
       <div className="ms-3">
       <img
-            src={`https://wow-app-server-v1.herokuapp.com/${gambar.image}`}
-            // src={`http://localhost:5000/uploads/profile/${gambar.image}`}
+            src={path + `${gambar.image}`}
             style={{
               // borderRadius: 200,
               clipPath: "circle()",

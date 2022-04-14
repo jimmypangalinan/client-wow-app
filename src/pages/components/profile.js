@@ -111,7 +111,7 @@ function Profile() {
               }}
             /> :
             <img
-              src={path + `profile/${gambar.image}`}
+              src={path + `${gambar.image}`}
               style={{
                 clipPath: "circle()",
                 height: 130,

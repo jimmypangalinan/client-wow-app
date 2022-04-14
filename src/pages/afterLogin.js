@@ -99,7 +99,7 @@ function AfterLogin() {
                       }}
                     >
                       <img
-                        src={ path + `cover/${item.cover}`}
+                        src={ path + `${item.cover}`}
                         alt=""
                         className="img-fluid shadow mx-auto w-100"
                         style={{ height: 390, borderRadius: 8 }}
@@ -124,7 +124,7 @@ function AfterLogin() {
                       }}
                     >
                       <img
-                        src={ path + `cover/${item.cover}`}
+                        src={ path + `${item.cover}`}
                         alt=""
                         className="img-fluid shadow  mx-auto w-100"
                         style={{ height: 390, borderRadius: 8 }}

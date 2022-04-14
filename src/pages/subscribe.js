@@ -139,67 +139,59 @@ function Subscribe() {
           >
             {profile.status === "Not subscribe" ? (
               <div className="">
-              <div className=" text-center">
-                <h1 className="mb-5">Premium</h1>
-                <h5 className="mx-2 ">
-                  Pay now and access all the latest books from
-                  <img src={Wow} alt="" />
-                </h5>
-                <h3 className="my-3">
-                  <img src={Wow} alt="" /> : 082298937
-                </h3>
+                <div className=" text-center">
+                  <h1 className="mb-5">Premium</h1>
+                  <h5 className="mx-2 ">
+                    Pay now and access all the latest books from
+                    <img src={Wow} alt="" />
+                  </h5>
+                  <h3 className="my-3">
+                    <img src={Wow} alt="" /> : 082298937
+                  </h3>
 
-                <form onSubmit={handleSubmit}>
-                  <div className="col-10 offset-1 ">
-                    <Form.Control
-                      type="number"
-                      placeholder="Input Your Account Number"
-                      name="accountNumber"
-                      onChange={handleChange}
-                    />
-                  </div>
+                  <form onSubmit={handleSubmit}>
+                    <div className="col-10 offset-1 ">
+                      <Form.Control
+                        type="number"
+                        placeholder="Input Your Account Number"
+                        name="accountNumber"
+                        onChange={handleChange}
+                      />
+                    </div>
 
-                  <label className="col-10 border border-danger mt-3 ps-3 py-2 fw-bold text-start text-danger">
-                    Attache proof of transfer
-                    <input
-                      type="file"
-                      className="fileInput d-none"
-                      name="transferProof"
-                      onChange={handleChange}
-                    />
-                    <img src={Attach} alt="" className="float-end pe-3" />
-                  </label>
+                    <label className="col-10 border border-danger mt-3 ps-3 py-2 fw-bold text-start text-danger">
+                      Attache proof of transfer
+                      <input
+                        type="file"
+                        className="fileInput d-none"
+                        name="transferProof"
+                        onChange={handleChange}
+                      />
+                      <img src={Attach} alt="" className="float-end pe-3" />
+                    </label>
 
-                  <div className="col-10 offset-1 d-grid gap-2 py-5">
-                    <button
-                      className="btn btn-danger"
-                      type="submit"
-                      onClick={handleToShowPremium}
-                    >
-                      Send
-                    </button>
-                  </div>
-                </form>
+                    <div className="col-10 offset-1 d-grid gap-2 py-5">
+                      <button
+                        className="btn btn-danger"
+                        type="submit"
+                        onClick={handleToShowPremium}
+                      >
+                        Send
+                      </button>
+                    </div>
+                  </form>
 
+                </div>
               </div>
-            </div>
             )
-               :
+              :
               (
                 <div>
-                <h3 className="mb-5">Your Status :</h3>
-                <h1 className="mb-5 text-success">Premium</h1>
-              </div>
+                  <h3 className="mb-5">Your Status :</h3>
+                  <h1 className="mb-5 text-success">Premium</h1>
+                </div>
               )
-
-
-
-
             }
-
-
-
-
           </div>
         </div>
       </div>

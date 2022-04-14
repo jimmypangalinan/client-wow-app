@@ -6,11 +6,13 @@ import Swal from "sweetalert2";
 import NavbarComponent from "../components/navbarAdmin";
 
 function Product() {
+  const [path, setPath] = useState();
     const [products, setProduct] = useState([]);
     const getproducts = async () => {
       try {
         const response = await API.get("/books");
         setProduct(response.data.data.books);
+        setPath(response.data.data.path);
       } catch (error) {
         console.log(error);
       }
@@ -68,8 +70,7 @@ function Product() {
                       key={item.id}
                     >
                       <img
-                        src={`https://wow-app-server-v1.herokuapp.com/uploads/cover/${item.cover}`}
-                        // src={`http://localhost:5000/uploads/cover/${item.cover}`}
+                        src={path + `${item.cover}`}
                         alt=""
                         className="img-fluid shadow mx-auto w-100"
                         style={{ height: 420, borderRadius: 8 }}
