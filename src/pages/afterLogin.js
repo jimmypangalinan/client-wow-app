@@ -12,6 +12,7 @@ import "../style/afterLogin.css";
 function AfterLogin() {
 
   const navigate = useNavigate();
+
   // show please make a payment
   const [show, setShow] = useState(false);
 
@@ -68,17 +69,21 @@ function AfterLogin() {
             Please Make a Payment To Read The Latest Books
           </p>
         </div>
+
       </Modal>
+
       <div className="container-fluid">
         <div className="d-sm-none">
           <NavbarMobile />
         </div>
         <div className="row">
+
           <div className="col-3 position-relative d-none d-sm-block"  >
             <div className="position-fixed ms-5 ps-3 ">
               <Profile userStatus={getProfile} />
             </div>
           </div>
+
           <div className="col col-lg-9">
 
             <img src={Banner} alt="" className="w-100" />
@@ -100,7 +105,7 @@ function AfterLogin() {
                     >
                       <img
                         src={ path + `${item.cover}`}
-                        alt=""
+                        alt="cover"
                         className="img-fluid shadow mx-auto w-100"
                         style={{ height: 390, borderRadius: 8 }}
                       />
@@ -138,6 +143,7 @@ function AfterLogin() {
               </div>
             )}
           </div>
+          
         </div>
       </div>
     </div>

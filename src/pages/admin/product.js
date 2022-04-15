@@ -6,8 +6,11 @@ import Swal from "sweetalert2";
 import NavbarComponent from "../components/navbarAdmin";
 
 function Product() {
-  const [path, setPath] = useState();
+
+    const [path, setPath] = useState();
     const [products, setProduct] = useState([]);
+
+    // get books
     const getproducts = async () => {
       try {
         const response = await API.get("/books");
@@ -22,7 +25,7 @@ function Product() {
       getproducts();
     }, []);
 
-    //////////////////////
+    // delete pbook
     const DeleteProduct = async (id) => {
       try {
         const response = await API.delete(`/book/${id}`);
@@ -36,7 +39,7 @@ function Product() {
             showConfirmButton: false,
             timer: 4000
           })
-          
+          getproducts();
         }
       } catch (error) {
         Swal.fire({
@@ -65,7 +68,7 @@ function Product() {
                 {products.map((item) => {
                   return (
                     <div
-                      className="col-3 text-wrap "
+                      className="col-6 col-lg-3  text-wrap mb-3"
                       item={item}
                       key={item.id}
                     >
@@ -76,12 +79,14 @@ function Product() {
                         style={{ height: 420, borderRadius: 8 }}
                       />
 
-                      <h5 className="my-2">{item.title}</h5>
+                      <h5 className="my-2 text-truncate text-wrap">{item.title}</h5>
                       <p>{item.author}</p>
+
                       <button 
-                        className="btn btn-danger" 
+                        className="btn btn-danger shadow-none" 
                         onClick={() => DeleteProduct(item.id)}  
                       >Delete</button>
+                      
                     </div>
                   );
                 })}

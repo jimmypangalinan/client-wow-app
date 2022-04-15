@@ -109,11 +109,9 @@ function Subscribe() {
     navigate("/afterlogin");
   };
 
-
-
-
   return (
     <div>
+
       <Modal show={show} onHide={handleToHidePremium} className="mt-5">
         <div className="py-3 text-center">
           <p className="fw-bold my-3 mx-5 text-success">
@@ -122,16 +120,21 @@ function Subscribe() {
           </p>
         </div>
       </Modal>
+
       <div className="container-fluid">
+
         <div className="d-sm-none">
           <NavbarUserMobile />
         </div>
+
         <div className="row">
+
           <div className="col-3 position-relative d-none d-sm-block">
             <div className="position-fixed ms-5 ps-3 ">
               <Profile />
             </div>
           </div>
+          
           <div
             className="col col-lg-9 d-flex justify-content-center align-items-center "
             id="premium"

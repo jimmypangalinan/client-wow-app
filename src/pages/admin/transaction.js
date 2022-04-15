@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Table, Dropdown} from "react-bootstrap";
 import { API } from "../../config/api";
 import NavbarComponent from "../../pages/components/navbarAdmin";
+import '../../style/transaction.css'
 
 function Transaction() {
   const [path, setPath] = useState([]);

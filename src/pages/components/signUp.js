@@ -148,7 +148,7 @@ function SignUp() {
             />
           </Form.Group>
           <div className="d-grid gap-2">
-            <Button variant="danger" type="submit">
+            <Button variant="danger shadow-none" type="submit">
               Sign Up
             </Button>
           </div>
@@ -166,7 +166,7 @@ function SignUp() {
           </div>
         </Form>
       </Modal>
-      <Button variant="danger px-5 fw-bold " onClick={showModalSignUp}>
+      <Button variant="danger px-5 fw-bold shadow-none " onClick={showModalSignUp}>
         Sign Up
       </Button>
     </div>

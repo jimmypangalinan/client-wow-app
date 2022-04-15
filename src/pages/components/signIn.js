@@ -140,7 +140,7 @@ function Login() {
             />
           </Form.Group>
           <div className="d-grid gap-2 bg-info">
-            <Button variant="danger fw-bold" type="submit">
+            <Button variant="danger fw-bold shadow-none" type="submit">
               Sign In
             </Button>
           </div>
@@ -159,7 +159,7 @@ function Login() {
         </Form>
       </Modal>
       <Button
-        variant="btn-ligth px-5 fw-bold"
+        variant="btn-ligth px-5 fw-bold shadow-none"
         onClick={showModalLogin}
         style={{ backgroundColor: "#CDCDCD" }}
       >

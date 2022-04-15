@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // import styling
 import "../style/landingPage.css";
@@ -9,12 +10,12 @@ import SignUp from "./components/signUp.js";
 
 // assets
 import Logo from "../assets/logo.png";
-import { Modal } from "react-bootstrap";
 
 function LandingPage() {
+  const navigate = useNavigate();
+  
   const [modalShow, setModalShow] = useState(false);
  
-
   return (
     <div className="img-fluid bg-image  vh-100 bgimg">
       <div className="">

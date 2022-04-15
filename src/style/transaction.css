@@ -1,0 +1,13 @@
+.dropdown-item { 
+    width: 90px !important;
+    /* background-color: aqua */
+    border: 1rem;
+  }
+  
+  .dropdown-menu {
+
+      max-height: max-content;
+      max-width: max-content;
+      border: none;
+      
+  }
