@@ -49,7 +49,8 @@ const ReadBook = () => {
       <div style={{ height: "100vh", position: "relative" }}>
         <ReactReader
           styles={ownStyles}
-          url={ path + `${read.bookFile}`}
+          url={"https://res.cloudinary.com/dv167pbfi/raw/upload/v1649908187/wow-app/alice_in_the__wonderland_z8vszr.epub"}
+          // url={ path + `${read.bookFile}`}
         />
       </div>
     </div>
